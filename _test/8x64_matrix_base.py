@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright (c) 2017-18 Richard Hull and contributors
-# See LICENSE.rst for details.
+# bmosley June 30 2019
 
 import re
 import time
@@ -19,10 +18,10 @@ def demo(n, block_orientation, rotate, inreverse):
     # create matrix device
     serial = spi(port=0, device=0, gpio=noop())
     device = max7219(serial, cascaded=4, block_orientation=90)
-    print("Created device")
+    print("Created serial device connection with max7219 chipset over SPI.")
 
     # start demo
-    msg = "BRYAN Test Demo for 8x64"
+    msg = "BRYAN Test Demo for 8x64 led matrix"
     print(msg)
     show_message(device, msg, fill="white", font=proportional(CP437_FONT))
     time.sleep(1)
@@ -34,6 +33,7 @@ def demo(n, block_orientation, rotate, inreverse):
     voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint\
     occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit\
     anim id est laborum."
+
     msg = re.sub(" +", " ", msg)
     print(msg)
     show_message(device, msg, fill="white", font=proportional(LCD_FONT), scroll_delay=0)
